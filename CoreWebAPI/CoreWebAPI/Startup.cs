@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreWebAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreWebAPI
 {
@@ -26,6 +28,7 @@ namespace CoreWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<EmployeeDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnections")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
